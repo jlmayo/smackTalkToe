@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { UPDATE_USER_NAME, GET_USER } from '../utils/mutations';
 import { useAccountContext } from '../utils/globalstate';
-import Game from '../components/game';
+import Game from '../components/Game';
 
 const styles = {
     input: {
