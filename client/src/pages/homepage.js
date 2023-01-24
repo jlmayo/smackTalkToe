@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { UPDATE_USER_NAME, GET_USER } from '../utils/mutations';
+import { UPDATE_USER_NAME } from '../utils/mutations';
+import { GET_USER } from '../utils/queries';
 import { useAccountContext } from '../utils/globalstate';
-import Game from '../components/game';
+import Game from '../components/Game.js';
 
 const styles = {
     input: {
@@ -25,30 +26,15 @@ function HomePage () {
     const [losses, setLosses] = useState(state.losses);
     const [room, setRoom] = useState('');
     const enterRoom = () => {
-        // if (state.isLoggedIn) {
             const roomInput = document.getElementById('room');
             const roomId = roomInput.value;
             setRoom(roomId);
             console.log(room);
-            return <Game />;
-            
-        // } 
-        
-    }
-    const changeName = () => {
-        let newName = prompt("What would you like your new User Name to be?");
-        dispatch({
-            type: UPDATE_USER_NAME,
-            userName: newName,
-          });
-        setName(newName);
-        console.log(newName)
     }
     return (
         <>
             <div className="d-flex justify-content-center row">
                 <h2 className="col-12 text-center">Congratulations {name}!</h2>
-                <button type="button" className="btn btn-primary" style={styles.btn} onClick={changeName}>Change Name?</button>
                 <div className="col-12 text-center">You've lost {losses} games!</div>
                 <div className="col-12 text-center">You've only won {wins}!</div>
                 <div className="col-12 text-center">And you've Drawn {draws} times...</div>

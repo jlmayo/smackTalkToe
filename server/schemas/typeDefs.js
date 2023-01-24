@@ -23,7 +23,9 @@ const typeDefs = gql`
        addUser(username: String!, email: String!, password: String!): Auth
        updateUser(username: String! email: String! password: String!): User
        login(email: String!, password: String!): Auth
-       updateScore(username: String!, score: String!): User
+       updateWins(username: String!, wins: Int): User
+       updateLosses(username: String!, losses: Int): User
+       updateTies(username: String!, ties: Int): User
 }
 `;
 

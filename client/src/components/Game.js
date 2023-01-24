@@ -63,7 +63,7 @@ function Game () {
                 table[pattern[1]] === table[pattern[2]]
             ) {
                 setWinner(turn);
-
+                
                 setLoser(onDeck);
                 return;
             } else if (count === 9) {

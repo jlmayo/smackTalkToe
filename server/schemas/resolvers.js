@@ -4,7 +4,7 @@ const { signToken } = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        me: async (parent, args, context) => {
+        user: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({_id: context.user._id}).select("-_v -password"
                 );
@@ -28,19 +28,35 @@ const resolvers = {
             const token = signToken(user);
             return { token, user };
         },
-        addUser: async (parent, args) => {
-            const user = await User.create(args);
+        addUser: async (parent, {username, email, password}) => {
+            const user = await User.create({username, email, password});
             const token = signToken(user);
             return { token, user };
         },
-        updateScore: async (parent, { username, wtl }) => {
+        updateWins: async (parent, { username, wins }) => {
             const updatedUser = await User.findOneAndUpdate(
                 { username },
-                { $inc: { [wtl]: 1 }},
+                { $inc: { [wins]: 1 }},
                 { new: true }
             );
             return updatedUser;
-        }
+        },
+        updateTies: async (parent, { username, ties }) => {
+            const updatedUser = await User.findOneAndUpdate(
+                { username },
+                { $inc: { [ties]: 1 }},
+                { new: true }
+            );
+            return updatedUser;
+        },
+        updateLosses: async (parent, { username, losses }) => {
+            const updatedUser = await User.findOneAndUpdate(
+                { username },
+                { $inc: { [losses]: 1 }},
+                { new: true }
+            );
+            return updatedUser;
+        },
     },
 };
 

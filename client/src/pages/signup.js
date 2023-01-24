@@ -33,7 +33,7 @@ const styles = {
 
 function SignUp () {
     // default state
-    const [userFormData, setUserFormData] = useState({ userName: '', email: '', password: '' })
+    const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' })
     const [error, setError] = useState('');
     const [addUser, { data }] = useMutation(ADD_USER);
 
@@ -51,7 +51,7 @@ function SignUp () {
             return;
         }
         if (!checkPassword(userFormData.password)) {
-            setError(`Choose a more secure password ${userFormData.userName}`);
+            setError(`Choose a more secure password ${userFormData.username}`);
             return;
         }
         console.log(userFormData)
@@ -66,7 +66,7 @@ function SignUp () {
         };
         // resetting the form
             setUserFormData({
-                userName: '',
+                username: '',
                 email: '',
                 password: ''
             });
@@ -86,7 +86,7 @@ function SignUp () {
                     placeholder="Username"
                     name="userName"
                     type="text"
-                    value={userFormData.userName}
+                    value={userFormData.username}
                     onChange={handleInputChange} 
                     className="form-control" 
                     />
