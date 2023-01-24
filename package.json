@@ -2,9 +2,14 @@
   "name": "smacktalktoe",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run develop\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build",
+    "app": "npm run build && concurrently \"cd server && node server.js\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",
@@ -16,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/jlmayo/smackTalkToe/issues"
   },
-  "homepage": "https://github.com/jlmayo/smackTalkToe#readme"
+  "homepage": "https://github.com/jlmayo/smackTalkToe#readme",
+  "dependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
