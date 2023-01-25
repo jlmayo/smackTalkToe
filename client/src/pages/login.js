@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER} from '../utils/mutations';
 import AuthService from '../utils/auth';
@@ -33,6 +34,7 @@ const styles = {
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' })
   const [login, { error, data }] = useMutation(LOGIN_USER);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -50,6 +52,7 @@ const Login = (props) => {
         variables: { ...formState },
       });
       AuthService.login(data.login.token);
+      navigate("/homepage");
     } catch (e) {
       console.log(e);
     }
