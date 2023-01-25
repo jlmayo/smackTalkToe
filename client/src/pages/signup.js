@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { checkPassword, validateEmail } from '../utils/validation';
 import AuthService from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
@@ -36,7 +37,7 @@ function SignUp () {
     const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' })
     const [error, setError] = useState('');
     const [addUser, { data }] = useMutation(ADD_USER);
-
+    const navigate = useNavigate();
     
     const handleInputChange = (e) => {
         // setting up semantic variable to use
@@ -47,7 +48,7 @@ function SignUp () {
         e.preventDefault();
 
         if (!validateEmail(userFormData.email)) {
-            setError('Email of username is in valid');
+            setError('Email or username is in valid');
             return;
         }
         if (!checkPassword(userFormData.password)) {
@@ -60,7 +61,8 @@ function SignUp () {
             const { data } = await addUser({
                 variables: {userFormData}
             });
-            AuthService.login(data.addUser.token)
+            AuthService.login(data.addUser.token);
+            navigate("/homepage");
         } catch (err) {
             console.error(err);
         };
@@ -84,7 +86,7 @@ function SignUp () {
                     <div className="m-1">
                     <input 
                     placeholder="Username"
-                    name="userName"
+                    name="username"
                     type="text"
                     value={userFormData.username}
                     onChange={handleInputChange} 
@@ -113,7 +115,7 @@ function SignUp () {
                     />
                     </div>  
                     <button
-                        className="btn btn-info"
+                        className="btn btn-info m-1"
                         style={styles.btn}
                         type="submit"
                     >
