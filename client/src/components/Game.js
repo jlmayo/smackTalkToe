@@ -21,7 +21,7 @@ const styles = {
     }
 }
 function Game () {
-    const [state, dispatch] = useAccountContext('');
+    const [state] = useAccountContext('');
     const [turn, setTurn] = useState('User');
     const [onDeck, setOnDeck] = useState('Opponent');
     const [cells, setCells] = useState(Array(9).fill(''));

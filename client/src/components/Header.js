@@ -2,7 +2,7 @@ import React from "react";
 
 const styles = {
     h1: {
-        fontSize: '2000%',
+        fontSize: '500%',
         textShadow: '2px 2px 4px #858585',
     }
 }
