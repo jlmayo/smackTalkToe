@@ -67,7 +67,7 @@ const Login = (props) => {
     return (
       <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center">
-            <h1 className='text-center col-12' style={styles.h1}>Welcome Stranger, would you like to lose a game of Smack Talk Toe?</h1>
+            <h1 className='text-center col-12' style={styles.h1}>Welcome, Stranger! Would you like to lose a game of Smack Talk Toe?</h1>
             {data ? (
               <Link to="/homepage">Take me Home</Link>
             ) : (

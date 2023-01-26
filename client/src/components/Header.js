@@ -1,18 +1,23 @@
 import React from "react";
+import "./headerStyles.css";
+import IntroImg from "../assets/sttBackground.png";
 
-const styles = {
+
+/* const styles = {
     h1: {
         fontSize: '500%',
         textShadow: '2px 2px 4px #858585',
     }
-}
+} */
 
-function Header () {
+const Header = () => {
     return (
-        <div className="d-flex text-center row m-5">
-            <p className="col-12 text-center" style={styles.h1}>Smack Talk Toe</p>
+        <div className="hero" id="hero">
+            <div className="mask">
+            <img className="intro-img" src={IntroImg} alt="IntroImg" />
+            </div>
         </div>
-    )
-}
+    );
+};
 
 export default Header;
