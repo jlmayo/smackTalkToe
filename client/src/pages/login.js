@@ -38,8 +38,7 @@ const Login = (props) => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    setFormState({
+      setFormState({
       ...formState,
       [name]: value,
     });
@@ -48,10 +47,12 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await login({
-        variables: { ...formState },
+      console.log("line 50")
+      const mutationResponse = await login({
+        variables: { email: formState.email, password: formState.password },
       });
-      AuthService.login(data.login.token);
+      const token = mutationResponse.data.login.token;
+      AuthService.login(token);
       navigate("/homepage");
     } catch (e) {
       console.log(e);
@@ -121,4 +122,4 @@ const Login = (props) => {
     )
 }
 
-export default Login
+export default Login;

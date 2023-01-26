@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 import Header from "./components/Header";
 import Game from "./components/Game";
@@ -7,13 +9,9 @@ import HomePage from "./pages/homepage";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
 
-
-import { ApolloClient, InMemoryCache, ApolloProvider, createHttpLink } from '@apollo/client';
-import { setContext } from '@apollo/client/link/context';
-
 const httpLink = createHttpLink({
   uri: '/graphql',
-  cache: new InMemoryCache(),
+  // cache: new InMemoryCache(),
 });
 
 

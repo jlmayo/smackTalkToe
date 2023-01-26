@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
-import { checkPassword, validateEmail } from '../utils/validation';
+// import { checkPassword, validateEmail } from '../utils/validation';
 import AuthService from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
+
 
 const styles = {
     h1: {
@@ -32,42 +33,50 @@ const styles = {
     }
   }
 
-function SignUp () {
+function SignUp (props) {
     // default state
-    const [userFormData, setUserFormData] = useState({ username: '', email: '', password: '' })
-    const [error, setError] = useState('');
-    const [addUser, { data }] = useMutation(ADD_USER);
+    const [formState, setFormState] = useState({ username: '', email: '', password: '' });
+    const [addUser, { err, data }] = useMutation(ADD_USER);
     const navigate = useNavigate();
     
     const handleInputChange = (e) => {
         // setting up semantic variable to use
        const { name, value } = e.target;
-       setUserFormData({...userFormData, [name]: value});
+       setFormState({...formState, [name]: value});
     };
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-
-        if (!validateEmail(userFormData.email)) {
-            setError('Email or username is in valid');
-            return;
-        }
-        if (!checkPassword(userFormData.password)) {
-            setError(`Choose a more secure password ${userFormData.username}`);
-            return;
-        }
-        console.log(userFormData)
+        const mutationResponse = await addUser({
+            variables: {
+              email: formState.email,
+              password: formState.password,
+              username: formState.username,
+            },
+        });
+        const token = mutationResponse.data.addUser.token;
+        AuthService.login(token);
+        // if (!validateEmail(userFormData.email)) {
+        //     setError('Email or username is in valid');
+        //     return;
+        // }
+        // if (!checkPassword(userFormData.password)) {
+        //     setError(`Choose a more secure password ${userFormData.username}`);
+        //     return;
+        // }
+        
         // adding the user to the database
         try {
             const { data } = await addUser({
-                variables: {userFormData}
+                variables: { ...formState }
             });
             AuthService.login(data.addUser.token);
+            console.log(formState)
             navigate("/homepage");
         } catch (err) {
             console.error(err);
         };
         // resetting the form
-            setUserFormData({
+            setFormState({
                 username: '',
                 email: '',
                 password: ''
@@ -88,7 +97,7 @@ function SignUp () {
                     placeholder="Username"
                     name="username"
                     type="text"
-                    value={userFormData.username}
+                    value={formState.username}
                     onChange={handleInputChange} 
                     className="form-control" 
                     />
@@ -98,7 +107,7 @@ function SignUp () {
                     placeholder="Your email"
                     name="email"
                     type="email"
-                    value={userFormData.email}
+                    value={formState.email}
                     onChange={handleInputChange} 
                     className="form-control" 
                     />
@@ -110,7 +119,7 @@ function SignUp () {
                     type="password" 
                     className="form-control" 
                     id="exampleInputPassword1"
-                    value={userFormData.password}
+                    value={formState.password}
                     onChange={handleInputChange}
                     />
                     </div>  
@@ -123,11 +132,11 @@ function SignUp () {
                     </button>
                 </form>
                 )}
-            {error && (
+            {/* {error && (
                 <div>
                     <p className="error-text">{error}</p>
                 </div>
-            )}
+            )} */}
         </div>
     </div>
     );

@@ -19,7 +19,7 @@ const styles = {
 
 function HomePage () {
     const { data } = useQuery(GET_USER);
-    const [state, dispatch] = useAccountContext('');
+    const [state, dispatch] = useAccountContext('', '');
     const [name, setName] = useState(state.name);
     const [wins, setWins] = useState(state.wins);
     const [draws, setDraws] = useState(state.draws);
