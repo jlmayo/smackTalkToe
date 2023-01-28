@@ -11,3 +11,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.nav-menu {
+  display: flex;
+}
+
+.nav-menu li {
+  padding: 0 1rem;
+}
+
+.nav-menu li a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.nav-menu li a:hover {
+  color: #17A6D7;
+}
+
+.nav-menu .selected {
+  color: #17A6D7;
+}

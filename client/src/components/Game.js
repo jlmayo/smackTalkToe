@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import "./game.css";
 import { useAccountContext } from '../utils/globalstate';
-import { useQuery } from '@apollo/client';
+//import { useQuery } from '@apollo/client';
 
-const styles = {
+/*const styles = {
     td: {
         border: '1px solid #999',
         width: '100px',
@@ -19,7 +19,7 @@ const styles = {
         height: '60%',
         width: '30%',
     }
-}
+}*/
 function Game () {
     const [state] = useAccountContext('');
     const [turn, setTurn] = useState('User');

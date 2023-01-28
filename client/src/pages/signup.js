@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { checkPassword, validateEmail } from '../utils/validation';
 import AuthService from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
@@ -63,8 +63,11 @@ const SignUp = () => {
         <div className="row d-flex justify-content-center">
             <h1 className='text-center col-12' style={styles.h1}>Welcome Stranger, would you like to lose a game of Smack Talk Toe?</h1>
             {data ? (
-                <Link to="/homepage">Let's do this! Go Log In.</Link>
-                ) : (
+              <p>
+                Success! You may now head{' '}
+                <Link to="/">back to the homepage.</Link>
+              </p>
+            ) : (
                 <form onSubmit={handleFormSubmit} style={styles.form} className="d-flex justify-content-center col-6">
                     <div className="m-1">
                     <input 
