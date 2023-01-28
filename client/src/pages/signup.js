@@ -4,9 +4,10 @@ import { checkPassword, validateEmail } from '../utils/validation';
 import AuthService from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
+import "../index.css";
 
 
-const styles = {
+/*const styles = {
     h1: {
       color: "whitesmoke",
     },
@@ -30,7 +31,7 @@ const styles = {
       borderColor: "black",
       width: "10%"
     }
-  }
+  }*/
 
 const SignUp = () => {
     const [formState, setFormState] = useState({ username: '', email: '', password: '' });
@@ -61,14 +62,14 @@ const SignUp = () => {
     return (
     <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center">
-            <h1 className='text-center col-12' style={styles.h1}>Welcome Stranger, would you like to lose a game of Smack Talk Toe?</h1>
+            <h1 className='text-center col-12' >Welcome Stranger, would you like to lose a game of Smack Talk Toe?</h1>
             {data ? (
               <p>
                 Success! You may now head{' '}
                 <Link to="/">back to the homepage.</Link>
               </p>
             ) : (
-                <form onSubmit={handleFormSubmit} style={styles.form} className="d-flex justify-content-center col-6">
+                <form onSubmit={handleFormSubmit}  className="d-flex justify-content-center col-6">
                     <div className="m-1">
                     <input 
                     placeholder="Username"
@@ -102,7 +103,7 @@ const SignUp = () => {
                     </div>  
                     <button
                         className="btn btn-info m-1"
-                        style={styles.btn}
+                        
                         type="submit"
                     >
                         SignUp

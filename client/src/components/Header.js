@@ -1,11 +1,6 @@
 import React from "react";
 import Navbar from './Navbar';
 
-const styles = {
-    h1: {
-        fontSize: '775%',
-    }
-}
 
 function Header () {
     return (

@@ -1,22 +1,14 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-import { GET_USER } from '../utils/queries';
-import { useAccountContext } from '../utils/globalstate';
+//import { useQuery } from '@apollo/client';
+//import { GET_USER } from '../utils/queries';
+//import { useAccountContext } from '../utils/globalstate';
+import "../index.css";
 
-const styles = {
-    input: {
-        height: 'auto',
-        width: '100px',
-    },
-    btn: {
-        height: 'auto',
-        width: 'auto',
-    }
-}
+
 
 function HomePage () {
-    const { data } = useQuery(GET_USER);
+    //const { data } = useQuery(GET_USER);
     //const [state, dispatch] = useAccountContext('', '');
     //const [name, setName] = useState(state.name);
     //const [wins, setWins] = useState(state.wins);
@@ -38,8 +30,8 @@ function HomePage () {
                 <div className="col-12 text-center">And you've Drawn times...</div>
                 <div className="container d-flex justify-content-center m-5 row">
                     <div className="col-12 text-center">Let your opponent know what Room ID to use.</div>
-                    <input type="text" className="form-control row m-0" placeholder="RoomID" aria-label="RoomID" aria-describedby="button-addon2" style={styles.input} id="room"></input>
-                    <Link className="btn btn-outline-secondary row m-0" type="button" id="button-addon2" style={styles.btn} to={'/game'}>Enter</Link>
+                    <input type="text" className="form-control row m-0" placeholder="RoomID" aria-label="RoomID" aria-describedby="button-addon2"  id="room"></input>
+                    <Link className="btn btn-outline-secondary row m-0" type="button" id="button-addon2"  to={'/game'}>Enter</Link>
                 </div>
             </div>  
         </>

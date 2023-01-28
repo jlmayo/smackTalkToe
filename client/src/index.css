@@ -1,23 +1,44 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Courier New', Courier, monospace;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  text-align: center;
 }
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
 
 .nav-menu {
   display: flex;
+  flex: end;
+  font-family: "Courier Prime", monospace;
+}
+
+ul a {
+  list-style-type: none;
+  text-decoration: none;
 }
 
 .nav-menu li {
   padding: 0 1rem;
+  display: inline-block;
+
 }
 
 .nav-menu li a {
@@ -32,4 +53,36 @@ code {
 
 .nav-menu .selected {
   color: #17A6D7;
+}
+
+h1 {
+  color: "whitesmoke";
+}
+
+form {
+  border: "2px ";
+  border-radius: "5px";
+  margin: "5px"
+}
+
+input {
+  background: "#c3d898";
+  color: "#70161e";
+  height: 'auto';
+  width: '100px';
+}
+
+btn {
+  color: "black";
+  background: "#858585";
+  border: "black";
+  height: 'auto';
+  width: 'auto';
+}
+
+button {
+  color: "black";
+  background: "#858585";
+  border: "black";
+  width: "10%";
 }

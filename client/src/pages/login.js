@@ -3,8 +3,10 @@ import { Navigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import AuthService from '../utils/auth';
+import "../index.css";
 
-const styles = {
+
+/*const styles = {
   h1: {
     color: "whitesmoke",
   },
@@ -28,7 +30,7 @@ const styles = {
     borderColor: "black",
     width: "10%"
   }
-}
+}*/
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' })
@@ -66,12 +68,12 @@ const Login = (props) => {
     return (
       <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center">
-            <h1 className='text-center col-12' style={styles.h1}>Welcome, Stranger! Would you like to lose a game of Smack Talk Toe?</h1>
+            <h1 className='text-center col-12'>Welcome, Stranger! Would you like to lose a game of Smack Talk Toe?</h1>
             {AuthService.loggedIn() && (<Navigate to='/homepage' replace={true} />)}
             {data ? (
               <p>Get in, Loser. We're playing Tic Tac Toe.</p>
             ) : (
-            <form onSubmit={handleFormSubmit} style={styles.form} className="d-flex justify-content-center">
+            <form onSubmit={handleFormSubmit} className="d-flex justify-content-center">
                 <div className="m-1">
                   <input 
                   placeholder="Your email"
@@ -97,7 +99,6 @@ const Login = (props) => {
                 </div> 
                 <button
                   className="btn btn-info m-1"
-                  style={ styles.btn }
                   type="submit"
                 >
                   Login
@@ -109,12 +110,12 @@ const Login = (props) => {
                 {error}
               </div>
             )}
-            <h2 className='text-center' style={styles.h1}>Or</h2>
+            <h2 className='text-center' >Or</h2>
             <div className='d-flex justify-content-center'>
               <button
                   className="btn btn-block btn-info"
-                  style={styles.button}
-                ><a href='/signup' style={styles.button}>Sign Up</a>
+                  
+                ><a href='/signup'>Sign Up</a>
               </button>
             </div>
         </div>

@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import Auth from '../utils/auth';
+import AuthService from '../utils/auth';
 import "../index.css";
 
-function Nav() {
+function Navbar() {
 	const logout = (event) => {
 		event.preventDefault();
-		Auth.logout();
+		AuthService.logout();
 	  };
 	return (
 		<nav className="nav-menu">
@@ -15,14 +15,14 @@ function Nav() {
 					<Link to="/">Home</Link>
 				</li>
 				<li>
-					{Auth.loggedIn() ? (<Link to="/game">Play a Game</Link>) : (<Link to="/login">Play a Game</Link>)}
+					{AuthService.loggedIn() ? (<Link to="/homepage">Player Home</Link>) : (<Link to="/">Play a Game</Link>)}
 				</li>
 				<li>
-					{Auth.loggedIn() ? (<div onClick={logout}>Logout</div>) : (<Link to="/login">Login</Link>)}
+					{AuthService.loggedIn() ? (<div onClick={logout}>Logout</div>) : (<Link to="/">Login</Link>)}
 				</li>
 			</ul>
 		</nav>
 	);
 }
 
-export default Nav;
+export default Navbar;
