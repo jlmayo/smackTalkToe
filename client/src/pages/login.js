@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER} from '../utils/mutations';
+import { LOGIN_USER } from '../utils/mutations';
 import AuthService from '../utils/auth';
 
 const styles = {
@@ -34,10 +33,10 @@ const styles = {
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' })
   const [login, { error, data }] = useMutation(LOGIN_USER);
-  const navigate = useNavigate();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
+
       setFormState({
       ...formState,
       [name]: value,
@@ -46,18 +45,18 @@ const Login = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log(formState);
+
     try {
-      console.log("line 50")
-      const mutationResponse = await login({
-        variables: { email: formState.email, password: formState.password },
+      const { data } = await login({
+        variables: { ...formState },
       });
-      const token = mutationResponse.data.login.token;
-      AuthService.login(token);
-      navigate("/homepage");
+
+      AuthService.login(data.login.token);
     } catch (e) {
-      console.log(e);
+      console.error(e);
     }
-    console.log(formState)
+
     setFormState({
       email: '',
       password: '',
@@ -68,8 +67,9 @@ const Login = (props) => {
       <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center">
             <h1 className='text-center col-12' style={styles.h1}>Welcome, Stranger! Would you like to lose a game of Smack Talk Toe?</h1>
+            {AuthService.loggedIn() && (<Navigate to='/homepage' replace={true} />)}
             {data ? (
-              <Link to="/homepage">Take me Home</Link>
+              <p>Get in, Loser. We're playing Tic Tac Toe.</p>
             ) : (
             <form onSubmit={handleFormSubmit} style={styles.form} className="d-flex justify-content-center">
                 <div className="m-1">

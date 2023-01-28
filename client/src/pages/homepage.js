@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { UPDATE_USER_NAME } from '../utils/mutations';
 import { GET_USER } from '../utils/queries';
 import { useAccountContext } from '../utils/globalstate';
-import Game from '../components/Game.js';
 
 const styles = {
     input: {

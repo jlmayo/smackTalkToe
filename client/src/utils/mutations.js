@@ -29,7 +29,7 @@ export const UPDATE_WINS = gql`
      mutation updateWins($id: ID!, $wins: Int!) {
             updateWins(id: $id, wins: $wins) {
                 _id
-                userName
+                username
                 wins
             }
         }
@@ -39,7 +39,7 @@ export const UPDATE_LOSSES = gql`
      mutation updateLosses($id: ID!, $losses: Int!) {
             updateLossess(id: $id, losses: $losses) {
                 _id
-                userName
+                username
                 losses
             }
         }
@@ -49,7 +49,7 @@ export const UPDATE_TIES = gql`
      mutation updateTies($id: ID!, $ties: Int!) {
             updateTies(id: $id, ties: $ties) {
                 _id
-                userName
+                username
                 ties
             }
         }

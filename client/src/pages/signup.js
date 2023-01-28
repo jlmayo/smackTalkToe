@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
-// import { checkPassword, validateEmail } from '../utils/validation';
+import { checkPassword, validateEmail } from '../utils/validation';
 import AuthService from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import { useMutation } from "@apollo/client";
@@ -33,63 +32,38 @@ const styles = {
     }
   }
 
-function SignUp (props) {
-    // default state
+const SignUp = () => {
     const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-    const [addUser, { err, data }] = useMutation(ADD_USER);
-    const navigate = useNavigate();
+    const [addUser, { error, data }] = useMutation(ADD_USER);
     
     const handleInputChange = (e) => {
-        // setting up semantic variable to use
        const { name, value } = e.target;
+
        setFormState({...formState, [name]: value});
     };
+
     const handleFormSubmit = async (e) => {
         e.preventDefault();
-        const mutationResponse = await addUser({
-            variables: {
-              email: formState.email,
-              password: formState.password,
-              username: formState.username,
-            },
-        });
-        const token = mutationResponse.data.addUser.token;
-        AuthService.login(token);
-        // if (!validateEmail(userFormData.email)) {
-        //     setError('Email or username is in valid');
-        //     return;
-        // }
-        // if (!checkPassword(userFormData.password)) {
-        //     setError(`Choose a more secure password ${userFormData.username}`);
-        //     return;
-        // }
-        
-        // adding the user to the database
-        try {
-            const { data } = await addUser({
-                variables: { ...formState }
-            });
-            AuthService.login(data.addUser.token);
-            console.log(formState)
-            navigate("/homepage");
-        } catch (err) {
-            console.error(err);
-        };
-        // resetting the form
-            setFormState({
-                username: '',
-                email: '',
-                password: ''
-            });
-            setError('');
 
-    }
+        if (validateEmail(formState.email) && checkPassword (formState.password)) {
+            try {
+            const { data } = await addUser({
+                variables: { ...formState },
+            });
+
+            AuthService.login(data.addUser.token);
+             } catch (err) {
+            console.error(err);
+             }
+        };
+    };
+
     return (
     <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center">
             <h1 className='text-center col-12' style={styles.h1}>Welcome Stranger, would you like to lose a game of Smack Talk Toe?</h1>
             {data ? (
-                <Link to="/homepage">Let's do this!</Link>
+                <Link to="/homepage">Let's do this! Go Log In.</Link>
                 ) : (
                 <form onSubmit={handleFormSubmit} style={styles.form} className="d-flex justify-content-center col-6">
                     <div className="m-1">
@@ -132,14 +106,14 @@ function SignUp (props) {
                     </button>
                 </form>
                 )}
-            {/* {error && (
+             {error && (
                 <div>
                     <p className="error-text">{error}</p>
                 </div>
-            )} */}
+            )}
         </div>
     </div>
     );
-}
+};
 
 export default SignUp;
