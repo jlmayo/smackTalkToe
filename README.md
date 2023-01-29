@@ -54,4 +54,4 @@ Some possible future improvements include:
 
 GNU GENERAL PUBLIC LICENSE V3.0
 
-[Play Smack Talk Toe] (https://salty-castle-59845.herokuapp.com/)
+[Log In/Sign Up to play Smack Talk Toe](https://salty-castle-59845.herokuapp.com/)
