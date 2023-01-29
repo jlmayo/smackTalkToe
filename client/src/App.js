@@ -5,7 +5,7 @@ import { setContext } from '@apollo/client/link/context';
 import "./index.css";
 
 import Header from "./components/Header";
-import Game from "./components/Game";
+import Game from "./components/Game/Game";
 import HomePage from "./pages/homepage";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
