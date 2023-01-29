@@ -7,7 +7,7 @@ function Header () {
         <div>
             <Navbar />
             <div className="header">
-                <h1>Smack Talk Toe</h1>
+                <h1></h1>
             </div>
         </div>
     )

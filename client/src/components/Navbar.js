@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import AuthService from '../utils/auth';
 import "../index.css";
+import Logo from "../assets/Logo SMACK TALK TOE.png";
 
 function Navbar() {
 	const logout = (event) => {
@@ -12,7 +13,7 @@ function Navbar() {
 		<nav className="nav-menu">
 			<ul>
 				<li>
-					<Link to="/">Smack Talk Toe</Link>
+					<Link to="/"><img src={Logo} /></Link>
 				</li>
 				<li>
 					{AuthService.loggedIn() ? (<Link to="/homepage">Player Home</Link>) : (<Link to="/">Play a Game</Link>)}
