@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import AuthService from '../utils/auth';
@@ -68,7 +68,7 @@ const Login = (props) => {
     return (
       <div className="d-flex justify-content-center container">
         <div className="row d-flex justify-content-center">
-            <h1 className='text-center col-12'>Welcome, Stranger! Would you like to lose a game of Smack Talk Toe?</h1>
+            <h2 className='text-center col-12'>Welcome, Stranger!</h2><h3>Would you like to lose a game of Smack Talk Toe?</h3>
             {AuthService.loggedIn() && (<Navigate to='/homepage' replace={true} />)}
             {data ? (
               <p>Get in, Loser. We're playing Tic Tac Toe.</p>
@@ -110,13 +110,11 @@ const Login = (props) => {
                 {error}
               </div>
             )}
-            <h2 className='text-center' >Or</h2>
+            <h2 className='text-center'>Or</h2>
             <div className='d-flex justify-content-center'>
-              <button
-                  className="btn btn-block btn-info"
-                  
-                ><a href='/signup'>Sign Up</a>
-              </button>
+              <Link to="/signup">
+              <button className="btn btn-block btn-info">Sign Up</button>
+              </Link>
             </div>
         </div>
       </div>

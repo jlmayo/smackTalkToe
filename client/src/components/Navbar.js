@@ -12,7 +12,7 @@ function Navbar() {
 		<nav className="nav-menu">
 			<ul>
 				<li>
-					<Link to="/">Home</Link>
+					<Link to="/">Smack Talk Toe</Link>
 				</li>
 				<li>
 					{AuthService.loggedIn() ? (<Link to="/homepage">Player Home</Link>) : (<Link to="/">Play a Game</Link>)}

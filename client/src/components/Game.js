@@ -155,9 +155,9 @@ function Game () {
                         </tbody>
                     </table>
                 </div>
-                <div className="container border border-2 border-light rounded col-4" style={styles.chat}>
+                {/*<div className="container border border-2 border-light rounded col-4" style={styles.chat}>
                     <p>This is where chat will be</p>
-                </div>
+                </div>*/}
             </div>
             {winner && (
                     <div className="row d-flex justify-content-center">
