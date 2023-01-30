@@ -64,7 +64,8 @@
     transition: 0.3s; 
   }
 
-  .scoreboard {
+  .scoreboard
+  .userStats {
     display: flex;
     flex-direction: row;
     align-items: center;

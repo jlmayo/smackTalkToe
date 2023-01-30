@@ -37,7 +37,7 @@ const Game = () => {
         const winner = whoWon(updatedCells);
 
         if (winner) {
-            if(winner === '0') {
+            if(winner === 'O') {
                 let { oScore } = scores;
                 oScore += 1;
                 setScores({ ...scores, oScore })

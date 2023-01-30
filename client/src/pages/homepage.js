@@ -14,7 +14,7 @@ function HomePage () {
     return (
             <div className="d-flex justify-content-center row">
                 <div className="title">
-                <h1>Welcome, {username}</h1>
+                <h1>Welcome, {username}!</h1>
                 </div>                    
 
                 <div className="col-12 text-center">You've lost games!</div>
