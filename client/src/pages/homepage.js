@@ -10,6 +10,9 @@ import "../index.css";
 function HomePage () {
     const { data } = useQuery(GET_USER);
     const username = data?.user.username || [];
+    const wins = data?.user.wins || 0;
+    const losses = data?.user.losses || 0;
+    const ties = data?.user.ties || 0;
 
     return (
             <div className="d-flex justify-content-center row">
@@ -17,9 +20,9 @@ function HomePage () {
                 <h1>Welcome, {username}!</h1>
                 </div>                    
 
-                <div className="col-12 text-center">You've lost games!</div>
-                <div className="col-12 text-center">You've only won </div>
-                <div className="col-12 text-center">And you've Drawn times...</div>
+                <div className="col-12 text-center">You've lost {losses} games!</div>
+                <div className="col-12 text-center">You've only won {wins} games. </div>
+                <div className="col-12 text-center">And you've tied {ties} times.</div>
                 <div className="container d-flex justify-content-center m-5 row">
                     <div className="col-12 text-center">Let your opponent know what Room ID to use.</div>
                             <input type="text" className="form-control row m-0" placeholder="RoomID" aria-label="RoomID" aria-describedby="button-addon2"  id="room"></input>
