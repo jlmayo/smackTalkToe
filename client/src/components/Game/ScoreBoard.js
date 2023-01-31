@@ -9,13 +9,13 @@ export const ScoreBoard = ({ scores, turn }) => {
   const wins = data?.user.wins || 0;
   const losses = data?.user.losses || 0;
   const ties = data?.user.ties || 0;
-  const { xScore, oScore } = scores;
+  const { P1, P2 } = scores;
 
   return (
     <>
       <div className="scoreboard">
-        <div className={`score x-score ${!turn && "inactive"}`}>X - {xScore}</div>
-        <div className={`score o-score ${turn && "inactive"}`}>O - {oScore}</div>
+        <div className={`score p1-score ${!turn && "inactive"}`}>X - {P1}</div>
+        <div className={`score p2-score ${turn && "inactive"}`}>O - {P2}</div>
       </div>
 
       <div className="userStats"> <h1>Hey, {username}! </h1>

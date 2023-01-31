@@ -19,7 +19,7 @@ const Game = () => {
 
     const [turn, setTurn] = useState(true);
     const [cells, setCells] = useState(Array(9).fill(null));
-    const [scores, setScores] = useState({ xScore: 0, oScore: 0 })
+    const [scores, setScores] = useState({ P1: 0, P2: 0 })
     const [gameOver, setGameOver] = useState(false);
 
 
@@ -38,13 +38,13 @@ const Game = () => {
 
         if (winner) {
             if(winner === 'O') {
-                let { oScore } = scores;
-                oScore += 1;
-                setScores({ ...scores, oScore })
+                let { P2 } = scores;
+                P2 += 1;
+                setScores({ ...scores, P2 })
             } else {
-                let { xScore } = scores;
-                xScore += 1;
-                setScores({ ...scores, xScore })
+                let { P1 } = scores;
+                P1 += 1;
+                setScores({ ...scores, P1 })
             }
         }
 
